@@ -1,0 +1,21 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetHotel_Padeanu_Andreea.Pages.ReservationPage"
+             Title="Rezervare Nouă">
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Data Începerii" />
+        <DatePicker x:Name="startDatePicker" Format="D"/>
+
+        <Label Text="Data Sfârșitului" />
+        <DatePicker x:Name="endDatePicker" Format="D"/>
+
+        <Label Text="Selectează Facilitatea" />
+        <Picker x:Name="facilitiesPicker" ItemDisplayBinding="{Binding Name}">
+
+        </Picker>
+        <Button Text="Salvează Rezervarea" Clicked="OnSaveReservationClicked"/>
+
+
+    </StackLayout>
+</ContentPage>

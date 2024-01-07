@@ -1,0 +1,101 @@
+﻿<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Class="PetHotel_Padeanu_Andreea.Pages.MainPage">
+
+    <ContentPage Title="Acasă">
+        <AbsoluteLayout>
+            <Image Source="poza1.jpeg" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" />
+
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Label Text="Bine ai venit la PetHotel!" 
+                       FontSize="32"
+                       TextColor="Black"
+                       HorizontalOptions="Center"/>
+                <Button Text="Fă o rezervare"
+                        Clicked="OnMakeReservationClicked"  />           
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage>
+
+    <ContentPage Title="Contul Meu">
+    <AbsoluteLayout>
+        <Image Source="poza1.jpeg" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" />
+
+        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" Padding="20">
+            <Frame BackgroundColor="#AAFFFFFF" Padding="10" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Bine ai venit în zona ta personală!"
+                           HorizontalOptions="Center"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           Margin="0,10,0,10" />
+                    <Label Text="Aici poți gestiona profilul și animăluțele tale de companie."
+                           HorizontalOptions="Center"
+                           FontSize="Small"
+                           TextColor="Black" />
+                </StackLayout>
+            </Frame>
+
+            <Button Text="Actualizare date" Clicked="OnViewUpdateClientClicked" Margin="0,10"/>
+            <Button Text="Animăluțul tău" Clicked="OnManagePetsClicked" Margin="0,10"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
+
+<ContentPage Title="Rezervări" x:Name="reservationsPage">
+    <AbsoluteLayout>
+        <Image Source="poza1.jpeg" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" />
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <Grid VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Rezervările tale:" FontSize="20" HorizontalOptions="Center" Margin="0,10,0,10" Grid.Row="0" />
+                <CollectionView x:Name="reservationsListView" Grid.Row="1">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Facility.Name}" FontAttributes="Bold" FontSize="16"/>
+                                    <Label Text="{Binding StartDate, StringFormat='Început: {0:dd/MM/yyyy}'}"/>
+                                    <Label Text="{Binding EndDate, StringFormat='Sfârșit: {0:dd/MM/yyyy}'}"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>
+
+<ContentPage Title="Alerte">
+    <AbsoluteLayout>
+        <Image Source="poza1.jpeg" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" />
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <Grid VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Alertele tale:" FontSize="20" HorizontalOptions="Center" Margin="0,10,0,10" Grid.Row="0" />
+                <CollectionView x:Name="notificationsListView" Grid.Row="1">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Message}"/>
+                                    <Label Text="{Binding DateCreated, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>
+
+</TabbedPage>

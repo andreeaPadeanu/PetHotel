@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetHotel_Padeanu_Andreea.Pages.PetsManagementPage"
+             Title="Gestionare Animale de Companie">
+    <AbsoluteLayout>
+        <Image Source="poza1.jpeg" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" />
+
+        <StackLayout Padding="10" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <CollectionView x:Name="petsListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout HorizontalOptions="Center">
+                            <Label Text="Animăluțul tău:"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   HorizontalOptions="StartAndExpand"
+                                   Margin="0,5,0,0" />
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Nume:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                                <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="1" />
+
+                                <Label Text="Tip:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" />
+                                <Label Text="{Binding Type}" Grid.Row="1" Grid.Column="1" />
+
+                                <Label Text="Culoare:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" />
+                                <Label Text="{Binding Color}" Grid.Row="2" Grid.Column="1" />
+
+                                <Label Text="Rasa:" Grid.Row="3" Grid.Column="0" FontAttributes="Bold" />
+                                <Label Text="{Binding Race}" Grid.Row="3" Grid.Column="1" />
+
+                                <Label Text="Alergii:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" />
+                                <Label Text="{Binding Allergies}" Grid.Row="4" Grid.Column="1" />
+
+                                <Button Text="Edit" Grid.Row="5" Grid.Column="0" Clicked="OnEditPetClicked" />
+                                <Button Text="Delete" Grid.Row="5" Grid.Column="1" Clicked="OnDeletePetClicked" />
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Adaugă Animal de Companie" Clicked="OnAddPetClicked"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
